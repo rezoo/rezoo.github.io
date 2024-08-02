@@ -18,7 +18,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-齋藤 真樹は機械学習関係の研究開発業務を請け負う独立系研究者（a.k.a. フリーランス）です。2016年3月に[東北大学情報科学研究科](http://www.vision.is.tohoku.ac.jp/jp/home/)の博士号を取得した後、[株式会社Preferred Networks](https://www.preferred.jp/ja/)でリサーチャーとして8年間勤務し、2024年4月に独立、現在に至ります。具体的な経歴に関しては[LinkedIn](https://www.linkedin.com/in/saitomasaki)をご参照ください。
+齋藤 真樹は機械学習関係の研究開発業務を請け負う独立系研究者（a.k.a. フリーランス）です。2016年3月に[東北大学情報科学研究科](http://www.vision.is.tohoku.ac.jp/jp/home/)の博士号を取得した後、[株式会社Preferred Networks](https://www.preferred.jp/ja/)でリサーチャーとして8年間勤務し、2024年8月に独立、現在に至ります。具体的な経歴に関しては[LinkedIn](https://www.linkedin.com/in/saitomasaki)をご参照ください。
 
 博士課程では日本学術振興会(DC2)の特別研究員として勤務し、これまでにCVPR, ICCVを含む複数の国際会議に論文を通した経験をもちます。具体的な研究実績に関しては[Google Scholar](https://scholar.google.com/citations?user=KIxHWVMAAAAJ)をご参照ください。
 
