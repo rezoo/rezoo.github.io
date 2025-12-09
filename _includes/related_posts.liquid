@@ -1,3 +1,6 @@
+{%- comment -%}
+Original related posts + newsletter block commented out per request.
+
 {% assign have_related_posts = false %}
 {% for post in site.related_posts | limit: site.related_blog_posts.max_related %}
   {% unless have_related_posts %}
@@ -20,3 +23,4 @@
   <p class="mb-2" style="margin-top: 1.5rem !important">Subscribe to be notified of future articles:</p>
   {% include scripts/newsletter.liquid left=true %}
 {% endif %}
+{%- endcomment -%}
