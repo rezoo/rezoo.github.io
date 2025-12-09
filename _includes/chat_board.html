@@ -1,171 +1,151 @@
-{% assign dialogue = include.dialogue | default: [] %}
-{% assign default_avatar_left = "/assets/img/avatars/commentator.jpg" %}
-{% assign default_avatar_right = "/assets/img/avatars/listener.jpg" %}
+{% assign dialogue = include.dialogue | default: [] %} {% assign default_avatar_left = "/assets/img/avatars/commentator.jpg" %} {% assign
+default_avatar_right = "/assets/img/avatars/listener.jpg" %}
 <style>
-.chat-board {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 1.5rem 0;
-  --chat-bg: #f6f8fb;
-  --chat-border: #dce2ec;
-  --chat-text: #1d2733;
-  --chat-right-bg: #eef4ff;
-  --chat-right-border: #c7d8ff;
-}
-/* Force light palette when site/theme toggles to light */
-:root[data-theme="light"] .chat-board,
-.light .chat-board,
-body.light .chat-board {
-  --chat-bg: #f6f8fb;
-  --chat-border: #dce2ec;
-  --chat-text: #1d2733;
-  --chat-right-bg: #eef4ff;
-  --chat-right-border: #c7d8ff;
-}
-.chat-line {
-  display: flex;
-  gap: 0.8rem;
-  align-items: flex-start;
-}
-.chat-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--global-theme-color, #0d6efd);
-  background: #fff;
-}
-.chat-bubble {
-  position: relative;
-  padding: 0.9rem 1rem;
-  border-radius: 14px;
-  max-width: 640px;
-  line-height: 1.5;
-  background: var(--chat-bg);
-  border: 1px solid var(--chat-border);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-  color: var(--chat-text);
-}
-.chat-bubble,
-.chat-bubble p {
-  color: var(--chat-text);
-}
-.chat-bubble strong {
-  font-weight: 700;
-}
-.chat-bubble p {
-  margin: 0;
-}
-.chat-bubble::after {
-  content: "";
-  position: absolute;
-  top: 14px;
-  left: -8px;
-  width: 12px;
-  height: 12px;
-  background: inherit;
-  border-left: 1px solid var(--chat-border);
-  border-bottom: 1px solid var(--chat-border);
-  transform: rotate(45deg);
-}
-.chat-line.right {
-  flex-direction: row-reverse;
-}
-.chat-line.right .chat-bubble {
-  background: var(--chat-right-bg);
-  border-color: var(--chat-right-border);
-}
-.chat-line.right .chat-bubble::after {
-  left: auto;
-  right: -8px;
-  border-left: 0;
-  border-bottom: 0;
-  border-right: 1px solid var(--chat-right-border);
-  border-top: 1px solid var(--chat-right-border);
-}
-
-.chat-line.image-line {
-  justify-content: center;
-}
-.chat-image {
-  max-width: 720px;
-  width: 100%;
-}
-.chat-image img {
-  display: block;
-  width: 100%;
-  border-radius: 12px;
-  border: 1px solid var(--chat-border);
-  background: #fff;
-}
-.chat-caption {
-  margin-top: 0.35rem;
-  font-size: 0.95rem;
-  color: var(--chat-text);
-}
-
-@media (prefers-color-scheme: dark) {
   .chat-board {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    --chat-bg: #f6f8fb;
+    --chat-border: #dce2ec;
+    --chat-text: #1d2733;
+    --chat-right-bg: #eef4ff;
+    --chat-right-border: #c7d8ff;
+  }
+  /* Force light palette when site/theme toggles to light */
+  :root[data-theme="light"] .chat-board,
+  .light .chat-board,
+  body.light .chat-board {
+    --chat-bg: #f6f8fb;
+    --chat-border: #dce2ec;
+    --chat-text: #1d2733;
+    --chat-right-bg: #eef4ff;
+    --chat-right-border: #c7d8ff;
+  }
+  .chat-line {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+  .chat-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--global-theme-color, #0d6efd);
+    background: #fff;
+  }
+  .chat-bubble {
+    position: relative;
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+    max-width: 640px;
+    line-height: 1.5;
+    background: var(--chat-bg);
+    border: 1px solid var(--chat-border);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    color: var(--chat-text);
+  }
+  .chat-bubble,
+  .chat-bubble p {
+    color: var(--chat-text);
+  }
+  .chat-bubble strong {
+    font-weight: 700;
+  }
+  .chat-bubble p {
+    margin: 0;
+  }
+  .chat-bubble::after {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: -8px;
+    width: 12px;
+    height: 12px;
+    background: inherit;
+    border-left: 1px solid var(--chat-border);
+    border-bottom: 1px solid var(--chat-border);
+    transform: rotate(45deg);
+  }
+  .chat-line.right {
+    flex-direction: row-reverse;
+  }
+  .chat-line.right .chat-bubble {
+    background: var(--chat-right-bg);
+    border-color: var(--chat-right-border);
+  }
+  .chat-line.right .chat-bubble::after {
+    left: auto;
+    right: -8px;
+    border-left: 0;
+    border-bottom: 0;
+    border-right: 1px solid var(--chat-right-border);
+    border-top: 1px solid var(--chat-right-border);
+  }
+
+  .chat-line.image-line {
+    justify-content: center;
+  }
+  .chat-image {
+    max-width: 720px;
+    width: 100%;
+  }
+  .chat-image img {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--chat-border);
+    background: #fff;
+  }
+  .chat-caption {
+    margin-top: 0.35rem;
+    font-size: 0.95rem;
+    color: var(--chat-text);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .chat-board {
+      --chat-bg: #1f2733;
+      --chat-border: #364152;
+      --chat-text: #e7ecf3;
+      --chat-right-bg: #273146;
+      --chat-right-border: #3b4d68;
+    }
+  }
+  /* Explicit dark theme class/attribute */
+  :root[data-theme="dark"] .chat-board,
+  .dark .chat-board,
+  body.dark .chat-board {
     --chat-bg: #1f2733;
     --chat-border: #364152;
     --chat-text: #e7ecf3;
     --chat-right-bg: #273146;
     --chat-right-border: #3b4d68;
   }
-}
-/* Explicit dark theme class/attribute */
-:root[data-theme="dark"] .chat-board,
-.dark .chat-board,
-body.dark .chat-board {
-  --chat-bg: #1f2733;
-  --chat-border: #364152;
-  --chat-text: #e7ecf3;
-  --chat-right-bg: #273146;
-  --chat-right-border: #3b4d68;
-}
 </style>
 
 <div class="chat-board">
-  {% for line in dialogue %}
-  {% assign speaker = line.speaker | default: line.role %}
-  {% assign side = line.side %}
-  {% if side == nil or side == "" %}
-    {% if speaker == "listener" or speaker == "curious" or speaker == "right" %}
-      {% assign side = "right" %}
-    {% else %}
-      {% assign side = "left" %}
-    {% endif %}
-  {% endif %}
-
-  {% assign avatar = line.avatar %}
-  {% if avatar == nil or avatar == "" %}
-    {% if speaker == "listener" or speaker == "curious" or side == "right" %}
-      {% assign avatar = default_avatar_right %}
-    {% else %}
-      {% assign avatar = default_avatar_left %}
-    {% endif %}
-  {% endif %}
-
-  {% if line.image %}
+  {% for line in dialogue %} {% assign speaker = line.speaker | default: line.role %} {% assign side = line.side %} {% if side == nil or side == "" %}
+  {% if speaker == "listener" or speaker == "curious" or speaker == "right" %} {% assign side = "right" %} {% else %} {% assign side = "left" %} {%
+  endif %} {% endif %} {% assign avatar = line.avatar %} {% if avatar == nil or avatar == "" %} {% if speaker == "listener" or speaker == "curious" or
+  side == "right" %} {% assign avatar = default_avatar_right %} {% else %} {% assign avatar = default_avatar_left %} {% endif %} {% endif %} {% if
+  line.image %}
   <div class="chat-line image-line">
     <div class="chat-image">
-      <img src="{{ line.image }}" alt="{{ line.alt | default: 'Image' }}">
+      <img src="{{ line.image }}" alt="{{ line.alt | default: 'Image' }}" />
       {% if line.caption %}
       <div class="chat-caption">{{ line.caption | markdownify }}</div>
       {% endif %}
     </div>
   </div>
-  {% continue %}
-  {% endif %}
+  {% continue %} {% endif %}
 
   <div class="chat-line {% if side == 'right' %}right{% endif %}">
     {% if avatar %}
-    <img class="chat-avatar" src="{{ avatar }}" alt="{{ line.alt | default: speaker | default: 'Avatar' }}">
+    <img class="chat-avatar" src="{{ avatar }}" alt="{{ line.alt | default: speaker | default: 'Avatar' }}" />
     {% endif %}
-    <div class="chat-bubble">
-      {{ line.text | markdownify }}
-    </div>
+    <div class="chat-bubble">{{ line.text | markdownify }}</div>
   </div>
   {% endfor %}
 </div>
