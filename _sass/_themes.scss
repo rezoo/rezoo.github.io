@@ -86,18 +86,19 @@ html[data-theme="dark"] {
   --global-newsletter-bg-color: #{$grey-color-light};
   --global-newsletter-text-color: #{$grey-color-dark};
 
-  --global-tip-block: #42b983;
-  --global-tip-block-bg: #e2f5ec;
-  --global-tip-block-text: #215d42;
-  --global-tip-block-title: #359469;
+  /* Dark-specific tip/warning/danger palettes for contrast */
+  --global-tip-block: #4dd7a4;
+  --global-tip-block-bg: #1f2c26;
+  --global-tip-block-text: #dff8eb;
+  --global-tip-block-title: #9cf4c7;
   --global-warning-block: #e7c000;
-  --global-warning-block-bg: #fff8d8;
-  --global-warning-block-text: #6b5900;
-  --global-warning-block-title: #b29400;
-  --global-danger-block: #c00;
-  --global-danger-block-bg: #ffe0e0;
-  --global-danger-block-text: #600;
-  --global-danger-block-title: #c00;
+  --global-warning-block-bg: #2c250f;
+  --global-warning-block-text: #f9e7a3;
+  --global-warning-block-title: #f2d45d;
+  --global-danger-block: #ff6b6b;
+  --global-danger-block-bg: #2d1818;
+  --global-danger-block-text: #ffd7d7;
+  --global-danger-block-title: #ff9a9a;
 
   .repo-img-light {
     display: none;
