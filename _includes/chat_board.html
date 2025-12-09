@@ -159,9 +159,9 @@ body.dark .chat-board {
   {% continue %}
   {% endif %}
 
-  <div class="chat-line {% if side == "right" %}right{% endif %}">
+  <div class="chat-line {% if side == 'right' %}right{% endif %}">
     {% if avatar %}
-    <img class="chat-avatar" src="{{ avatar }}" alt="{{ line.alt | default: speaker | default: "Avatar" }}">
+    <img class="chat-avatar" src="{{ avatar }}" alt="{{ line.alt | default: speaker | default: 'Avatar' }}">
     {% endif %}
     <div class="chat-bubble">
       {{ line.text | markdownify }}
