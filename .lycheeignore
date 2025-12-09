@@ -1,0 +1,3 @@
+_includes/chat_board.html
+{{ avatar }}
+{{ line.image }}
