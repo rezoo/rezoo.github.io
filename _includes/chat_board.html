@@ -150,7 +150,7 @@ body.dark .chat-board {
   {% if line.image %}
   <div class="chat-line image-line">
     <div class="chat-image">
-      <img src="{{ line.image }}" alt="{{ line.alt | default: "Image" }}">
+      <img src="{{ line.image }}" alt="{{ line.alt | default: 'Image' }}">
       {% if line.caption %}
       <div class="chat-caption">{{ line.caption | markdownify }}</div>
       {% endif %}
