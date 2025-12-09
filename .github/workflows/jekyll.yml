@@ -43,6 +43,8 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      - name: Install Jupyter (for jekyll-jupyter-notebook)
+        run: python -m pip install --upgrade jupyter
       - name: Install ImageMagick (for jekyll-imagemagick)
         run: sudo apt-get update -y && sudo apt-get install -y imagemagick
       - name: Build with Jekyll
