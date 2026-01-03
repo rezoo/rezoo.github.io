@@ -11,14 +11,18 @@
 [![deploy](https://github.com/alshedivat/al-folio/actions/workflows/deploy.yml/badge.svg)](https://github.com/alshedivat/al-folio/actions/workflows/deploy.yml)
 [![Maintainers](https://img.shields.io/badge/maintainers-4-success.svg)](#maintainers)
 [![GitHub contributors](https://img.shields.io/github/contributors/alshedivat/al-folio.svg)](https://github.com/alshedivat/al-folio/graphs/contributors/)
+
 [![Docker Image Version](https://img.shields.io/docker/v/amirpourmand/al-folio?sort=semver&label=docker%20image&color=blueviolet)](https://hub.docker.com/r/amirpourmand/al-folio)
 [![Docker Image Size](https://img.shields.io/docker/image-size/amirpourmand/al-folio?sort=date&label=docker%20image%20size&color=blueviolet)](https://hub.docker.com/r/amirpourmand/al-folio)
 [![Docker Pulls](https://img.shields.io/docker/pulls/amirpourmand/al-folio?color=blueviolet)](https://hub.docker.com/r/amirpourmand/al-folio)
 
 [![GitHub release](https://img.shields.io/github/v/release/alshedivat/al-folio)](https://github.com/alshedivat/al-folio/releases/latest)
-[![GitHub license](https://img.shields.io/github/license/alshedivat/al-folio?color=blue)](https://github.com/alshedivat/al-folio/blob/master/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/alshedivat/al-folio)](https://github.com/alshedivat/al-folio)
+[![GitHub license](https://img.shields.io/github/license/alshedivat/al-folio?color=blue)](https://github.com/alshedivat/al-folio/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/alshedivat/al-folio)](https://github.com/alshedivat/al-folio/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/alshedivat/al-folio)](https://github.com/alshedivat/al-folio/fork)
+
+[![Code Wiki](https://img.shields.io/badge/Code_Wiki-ask_about_repo-blue?logo=googlegemini)](https://codewiki.google/github.com/alshedivat/al-folio)
+[![DeepWiki](https://img.shields.io/badge/DeepWiki-ask_about_repo-lightcyan)](https://deepwiki.com/alshedivat/al-folio)
 
 </div>
 
@@ -87,7 +91,6 @@ Feel free to add your own page(s) by sending a PR.
 <a href="https://daviddmc.github.io/" target="_blank">★</a>
 <a href="https://andreaskuster.ch/" target="_blank">★</a>
 <a href="https://ellisbrown.github.io/" target="_blank">★</a>
-<a href="https://noman-bashir.github.io/" target="_blank">★</a>
 <a href="https://djherron.github.io/" target="_blank">★</a>
 <a href="https://rodosingh.github.io/" target="_blank">★</a>
 <a href="https://vdivakar.github.io/" target="_blank">★</a>
@@ -144,6 +147,36 @@ Feel free to add your own page(s) by sending a PR.
 <a href="https://sraf.ir" target="_blank">★</a>
 <a href="https://acad.garywei.dev/" target="_blank">★</a>
 <a href="https://tonideleo.github.io/" target="_blank">★</a>
+<a href="https://alonkellner.com/" target="_blank">★</a>
+<a href="https://berylbir.github.io/" target="_blank">★</a>
+<a href="https://global-anomaly.github.io/" target="_blank">★</a>
+<a href="https://mingsun-kaust.github.io/" target="_blank">★</a>
+<a href="https://hdocmsu.github.io/" target="_blank">★</a>
+<a href="https://trandangtrungduc.github.io/" target="_blank">★</a>
+<a href="https://kinghowler.github.io/" target="_blank">★</a>
+<a href="https://anurye.github.io/" target="_blank">★</a>
+<a href="https://charlie-xiao.github.io/" target="_blank">★</a>
+<a href="https://giuseppeperelli.github.io/" target="_blank">★</a>
+<a href="https://shlee-lab.github.io/" target="_blank">★</a>
+<a href="https://devos50.github.io/" target="_blank">★</a>
+<a href="https://vmooers.github.io/" target="_blank">★</a>
+<a href="https://jpfonseca.github.io/" target="_blank">★</a>
+<a href="https://dmitryryumin.github.io/" target="_blank">★</a>
+<a href="https://alexiglad.github.io/" target="_blank">★</a>
+<a href="https://nishanthjkumar.com/" target="_blank">★</a>
+<a href="https://joszuijderwijk.nl/" target="_blank">★</a>
+<a href="https://d-jiao.github.io/" target="_blank">★</a>
+<a href="https://cbuelt.github.io/" target="_blank">★</a>
+<a href="https://mehrdad-noori.github.io/" target="_blank">★</a>
+<a href="https://arthurclerjon.github.io/" target="_blank">★</a>
+<a href="https://eilamshapira.com/" target="_blank">★</a>
+<a href="https://freifrauvonbleifrei.github.io/" target="_blank">★</a>
+<a href="https://thomasbourke1.github.io/" target="_blank">★</a>
+<a href="https://siddharthsule.com/" target="_blank">★</a>
+<a href="https://waynexucn.github.io/" target="_blank">★</a>
+<a href="https://zlatanajanovic.com/" target="_blank">★</a>
+<a href="https://mchadolias.github.io/" target="_blank">★</a>
+<a href="https://syanyong.github.io/" target="_blank">★</a>
 </td>
 </tr>
 <tr>
@@ -158,6 +191,8 @@ Feel free to add your own page(s) by sending a PR.
 <a href="https://inbt.jhu.edu/epidiagnostics/" target="_blank">★</a>
 <a href="https://www.nuesl.org/" target="_blank">★</a>
 <a href="https://big-culture.github.io/" target="_blank">★</a>
+<a href="https://martinbulla.github.io/bullab/" target="_blank">★</a>  
+<a href="https://gpforesteyes.github.io/" target="_blank">★</a>
 </td>
 </tr>
 <tr>
@@ -193,17 +228,19 @@ Workshop on Structured Probabilistic Inference & Generative Modeling (ICML: <a h
 
 ### Desktop
 
-[![Google Lighthouse PageSpeed Insights](lighthouse_results/desktop/pagespeed.svg)](https://htmlpreview.github.io/?https://github.com/alshedivat/al-folio/blob/master/lighthouse_results/desktop/alshedivat_github_io_al_folio_.html)
+[![Google Lighthouse PageSpeed Insights](lighthouse_results/desktop/pagespeed.svg)](https://htmlpreview.github.io/?https://github.com/alshedivat/al-folio/blob/main/lighthouse_results/desktop/alshedivat_github_io_al_folio_.html)
 
 Run the test yourself: [Google Lighthouse PageSpeed Insights](https://pagespeed.web.dev/report?url=https%3A%2F%2Falshedivat.github.io%2Fal-folio%2F&form_factor=desktop)
 
 ### Mobile
 
-[![Google Lighthouse PageSpeed Insights](lighthouse_results/mobile/pagespeed.svg)](https://htmlpreview.github.io/?https://github.com/alshedivat/al-folio/blob/master/lighthouse_results/mobile/alshedivat_github_io_al_folio_.html)
+[![Google Lighthouse PageSpeed Insights](lighthouse_results/mobile/pagespeed.svg)](https://htmlpreview.github.io/?https://github.com/alshedivat/al-folio/blob/main/lighthouse_results/mobile/alshedivat_github_io_al_folio_.html)
 
 Run the test yourself: [Google Lighthouse PageSpeed Insights](https://pagespeed.web.dev/report?url=https%3A%2F%2Falshedivat.github.io%2Fal-folio%2F&form_factor=mobile)
 
 ## Table Of Contents
+
+<!--ts-->
 
 - [al-folio](#al-folio)
   - [User community](#user-community)
@@ -214,6 +251,7 @@ Run the test yourself: [Google Lighthouse PageSpeed Insights](https://pagespeed.
   - [Getting started](#getting-started)
   - [Installing and Deploying](#installing-and-deploying)
   - [Customizing](#customizing)
+  - [GitHub Copilot Agents](#github-copilot-agents)
   - [Features](#features)
     - [Light/Dark Mode](#lightdark-mode)
     - [CV](#cv)
@@ -222,7 +260,7 @@ Run the test yourself: [Google Lighthouse PageSpeed Insights](https://pagespeed.
     - [Collections](#collections)
     - [Layouts](#layouts)
       - [The iconic style of Distill](#the-iconic-style-of-distill)
-      - [Full support for math \& code](#full-support-for-math--code)
+      - [Full support for math &amp; code](#full-support-for-math--code)
       - [Photos, Audio, Video and more](#photos-audio-video-and-more)
     - [Other features](#other-features)
       - [GitHub's repositories and user stats](#githubs-repositories-and-user-stats)
@@ -237,6 +275,7 @@ Run the test yourself: [Google Lighthouse PageSpeed Insights](https://pagespeed.
     - [All Contributors](#all-contributors)
   - [Star History](#star-history)
   - [License](#license)
+  <!--te-->
 
 ## Getting started
 
@@ -249,6 +288,34 @@ For installation and deployment details please refer to [INSTALL.md](INSTALL.md)
 ## Customizing
 
 For customization details please refer to [CUSTOMIZE.md](CUSTOMIZE.md).
+
+## GitHub Copilot Agents
+
+This repository includes two specialized GitHub Copilot agents to enhance your development experience:
+
+### Customization Agent
+
+The **Customization Agent** helps you personalize your al-folio website by:
+
+- Guiding you through configuration changes step-by-step
+- Modifying files directly in your repository
+- Explaining technical concepts in plain language (great for users without coding experience)
+- Assisting with common tasks like updating your CV, adding publications, creating blog posts, and customizing themes
+
+See [CUSTOMIZE.md § GitHub Copilot Customization Agent](CUSTOMIZE.md#github-copilot-customization-agent) for detailed usage instructions.
+
+### Documentation Agent
+
+The **Documentation Agent** maintains clear and up-to-date project documentation by:
+
+- Updating documentation files when features change
+- Writing in a style accessible to academics and researchers
+- Keeping documentation synchronized with the codebase
+- Following documentation best practices
+
+See [CONTRIBUTING.md § GitHub Copilot Agents](CONTRIBUTING.md#github-copilot-agents) for more information.
+
+> **Requirements:** Both agents require a [GitHub Copilot](https://github.com/features/copilot) subscription. For more information about GitHub Copilot and how to use agents, see the [GitHub Copilot documentation](https://docs.github.com/en/copilot).
 
 ## Features
 
@@ -417,7 +484,7 @@ For frequently asked questions, please refer to [FAQ.md](FAQ.md).
 
 Contributions to al-folio are very welcome! Before you get started, please take a look at [the guidelines](CONTRIBUTING.md).
 
-If you would like to improve documentation or fix a minor inconsistency or bug, please feel free to send a PR directly to `master`. For more complex issues/bugs or feature requests, please open an issue using the appropriate template.
+If you would like to improve documentation or fix a minor inconsistency or bug, please feel free to send a PR directly to `main`. For more complex issues/bugs or feature requests, please open an issue using the appropriate template.
 
 ### Maintainers
 
@@ -445,7 +512,7 @@ Our most active contributors are welcome to join the maintainers team. If you ar
 ### All Contributors
 
 <a href="https://contrib.rocks">
-  <img src="https://contrib.rocks/image?repo=alshedivat/al-folio" />
+  <img src="https://contrib.rocks/image?repo=alshedivat/al-folio&max=500&columns=24" />
 </a>
 
 ## Star History
@@ -460,6 +527,6 @@ Our most active contributors are welcome to join the maintainers team. If you ar
 
 ## License
 
-The theme is available as open source under the terms of the [MIT License](https://github.com/alshedivat/al-folio/blob/master/LICENSE).
+The theme is available as open source under the terms of the [MIT License](https://github.com/alshedivat/al-folio/blob/main/LICENSE).
 
 Originally, **al-folio** was based on the [\*folio theme](https://github.com/bogoli/-folio) (published by [Lia Bogoev](https://liabogoev.com) and under the MIT license). Since then, it got a full re-write of the styles and many additional cool features.
