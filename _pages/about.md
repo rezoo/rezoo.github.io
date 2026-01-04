@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-# subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+# subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
 
 profile:
   align: right
@@ -13,9 +13,18 @@ profile:
 #    <p>123 your address street</p>
 #    <p>Your City, State 12345</p>
 
-news: false # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
+
+announcements:
+  enabled: false # includes a list of news items
+  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
+  limit: 5 # leave blank to include all the news in the `_news` folder
+
+latest_posts:
+  enabled: true
+  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
+  limit: 3 # leave blank to include all the blog posts
 ---
 
 齋藤 真樹は機械学習関係の研究開発業務を請け負う独立系研究者（a.k.a. フリーランス）です。2016年3月に[東北大学情報科学研究科](http://www.vision.is.tohoku.ac.jp/jp/home/)の博士号を取得した後、[株式会社Preferred Networks](https://www.preferred.jp/ja/)でリサーチャーとして8年間勤務し、2024年8月に独立、現在に至ります。具体的な経歴に関しては[LinkedIn](https://www.linkedin.com/in/saitomasaki)をご参照ください。
