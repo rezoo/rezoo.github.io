@@ -16,7 +16,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-視覚系の壁",
+        },{id: "post-人生はお尻拭きである",
+        
+          title: "人生はお尻拭きである",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/life-and-diaper/";
+          
+        },
+      },{id: "post-視覚系の壁",
         
           title: "視覚系の壁",
         
