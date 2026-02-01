@@ -16,7 +16,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-人生はお尻拭きである",
+        },{id: "post-社会実装において気をつけていること",
+        
+          title: "社会実装において気をつけていること",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/social-implementation/";
+          
+        },
+      },{id: "post-人生はお尻拭きである",
         
           title: "人生はお尻拭きである",
         
