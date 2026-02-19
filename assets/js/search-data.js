@@ -16,7 +16,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-社会実装において気をつけていること",
+        },{id: "post-jupyter-notebookはもう使わなれなくなるんじゃないか",
+        
+          title: "Jupyter Notebookはもう使わなれなくなるんじゃないか",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/jupyter-notebook/";
+          
+        },
+      },{id: "post-社会実装において気をつけていること",
         
           title: "社会実装において気をつけていること",
         
