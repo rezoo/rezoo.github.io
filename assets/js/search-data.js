@@ -16,9 +16,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-jupyter-notebookはもう使わなれなくなるんじゃないか",
+        },{id: "post-jupyter-notebookはもう使われなくなるんじゃないか",
         
-          title: "Jupyter Notebookはもう使わなれなくなるんじゃないか",
+          title: "Jupyter Notebookはもう使われなくなるんじゃないか",
         
         description: "",
         section: "Posts",
