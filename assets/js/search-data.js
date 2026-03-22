@@ -16,7 +16,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-jupyter-notebookはもう使われなくなるんじゃないか",
+        },{id: "post-子育てで買ってよかったもの",
+        
+          title: "子育てで買ってよかったもの",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/baby-products/";
+          
+        },
+      },{id: "post-jupyter-notebookはもう使われなくなるんじゃないか",
         
           title: "Jupyter Notebookはもう使われなくなるんじゃないか",
         
