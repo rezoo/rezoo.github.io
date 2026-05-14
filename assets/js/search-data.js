@@ -16,7 +16,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-子育てで買ってよかったもの",
+        },{id: "post-博士課程に進むべきなのか",
+        
+          title: "博士課程に進むべきなのか",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/phd-or-not/";
+          
+        },
+      },{id: "post-子育てで買ってよかったもの",
         
           title: "子育てで買ってよかったもの",
         
