@@ -18,7 +18,7 @@ ninja.data = [{
           },
         },{id: "post-博士課程に進むべきなのか",
         
-          title: "博士課程に進むべきなのか",
+          title: "博士課程に進むべきなのか？",
         
         description: "",
         section: "Posts",
