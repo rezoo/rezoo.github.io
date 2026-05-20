@@ -24,7 +24,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2026/phd-or-not/";
+            window.location.href = "/blog/2026/phd-work-life-tradeoff/";
           
         },
       },{id: "post-子育てで買ってよかったもの",
