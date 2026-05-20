@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "博士課程に進むべきなのか？"
-date: 2026-05-14 00:00:00 +0900
+date: 2026-05-20 00:00:00 +0900
 tags: [essay, academia]
 ---
 
