@@ -16,7 +16,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-博士課程に進むべきなのか",
+        },{id: "post-論文-製品化-子供のトリレンマ論",
+        
+          title: "論文-製品化-子供のトリレンマ論",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/paper-product-parenting-trilemma/";
+          
+        },
+      },{id: "post-博士課程に進むべきなのか",
         
           title: "博士課程に進むべきなのか？",
         
