@@ -16,9 +16,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-論文-製品化-子供のトリレンマ論",
+        },{id: "post-論文-製品化-育児のトリレンマ論",
         
-          title: "論文-製品化-子供のトリレンマ論",
+          title: "論文-製品化-育児のトリレンマ論",
         
         description: "",
         section: "Posts",
