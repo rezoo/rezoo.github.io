@@ -6,6 +6,7 @@ body {
   padding-bottom: 70px;
   color: var(--global-text-color);
   background-color: var(--global-bg-color);
+  font-family: "Noto Sans JP", sans-serif;
 
   h1,
   h2,
@@ -31,6 +32,24 @@ body.sticky-bottom-footer {
   max-width: $max-content-width;
 }
 
+// The navbar's and footer's inner .container both get an explicit 32px
+// gutter (overriding whatever ambient padding Bootstrap/MDB apply) so the
+// brand/nav links and the copyright line start at the same x-position as
+// the blog content below. The blog page's outer .container is zeroed
+// instead, since .post-header-inner / .post-content / .blog-list each
+// provide their own explicit 32px padding — giving every row of the page
+// the same 32px inset from the shared 930px column edge.
+.navbar > .container,
+footer .container {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.blog-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 // Profile
 .profile {
   img {
@@ -39,6 +58,192 @@ body.sticky-bottom-footer {
 }
 
 // TODO: redefine content layout.
+
+/******************************************************************************
+ * Blog (post hero, article body, list) — scoped under .blog-post / .blog-list
+ * so that shared .post / .post-header / .post-title markup on other layouts
+ * (page.liquid, archive layouts) is left untouched.
+ ******************************************************************************/
+
+.blog-post {
+  > .post-header {
+    // Full-bleed: break out of the parent .container so the gradient
+    // spans the entire viewport width, regardless of nesting depth.
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background: var(--header-grad);
+
+    .post-header-inner {
+      max-width: $max-content-width;
+      margin: 0 auto;
+      padding: 80px 32px 40px;
+    }
+
+    .post-meta-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .post-meta {
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+      line-height: 1;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+
+    .post-divider {
+      width: 22px;
+      height: 1px;
+      flex-shrink: 0;
+      background: var(--muted);
+    }
+
+    .post-tags {
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+      line-height: 1;
+      letter-spacing: 0.05em;
+      color: var(--tag);
+
+      a {
+        color: var(--tag);
+
+        &:hover {
+          color: var(--accent);
+        }
+      }
+    }
+
+    h1.post-title {
+      margin: 0;
+      max-width: 640px;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1.55;
+      color: var(--title);
+    }
+  }
+
+  .post-content {
+    max-width: $max-content-width;
+    padding: 48px 32px 88px;
+    font-size: 16px;
+    line-height: 2.05;
+    color: var(--text);
+
+    p {
+      margin: 0 0 28px;
+    }
+
+    blockquote:not(.block-tip):not(.block-warning):not(.block-danger) {
+      background: transparent;
+      margin: 36px 0;
+      padding: 0 0 0 20px;
+      border-left: 2px solid var(--accent);
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--quote-text);
+    }
+  }
+
+  > hr {
+    margin: 0 32px 32px;
+    border-color: var(--border);
+  }
+
+  .related-posts-heading,
+  .related-posts-intro,
+  .related-posts-list {
+    max-width: $max-content-width;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .related-posts-heading {
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--title);
+  }
+
+  .related-posts-intro {
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .related-posts-list {
+    margin-bottom: 48px;
+
+    li {
+      margin: 6px 0;
+    }
+  }
+
+  .related-posts-link {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--title);
+    }
+  }
+}
+
+.blog-list {
+  padding-left: 32px;
+  padding-right: 32px;
+
+  .header-bar {
+    text-align: left;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+
+    h1 {
+      color: var(--title);
+      font-size: 2.25rem;
+      font-weight: 700;
+    }
+
+    h2 {
+      color: var(--muted);
+    }
+  }
+
+  .tag-category-list {
+    ul li a {
+      color: var(--muted);
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+  }
+
+  .featured-posts .card {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+
+    &.hoverable:hover {
+      box-shadow: none;
+    }
+  }
+
+  .post-list li {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
 
 /******************************************************************************
  * Publications

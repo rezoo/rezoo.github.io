@@ -13,49 +13,54 @@ layout: default
   </style>
 {% endif %}
 
-<div class="post">
+<div class="post blog-post">
   <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">
-      作成日: {{ page.date | date: '%Y年%-m月%-d日' }}
-      {% if page.author %}・著者: {{ page.author }}{% endif %}
-      {% if page.last_updated %}・最終更新日: {{ page.last_updated | date: '%Y年%-m月%-d日' }}{% endif %}
-      {% if page.meta %}• {{ page.meta }}{% endif %}
-    </p>
-    <p class="post-tags">
-      {% if url_beginning == '/blog/' %}
-        <a href="{{ year | prepend: '/blog/' | relative_url }}"> <i class="fa-solid fa-calendar fa-sm"></i> {{ year }} </a>
-      {% else %}
-        <i class="fa-solid fa-calendar fa-sm"></i> {{ year }}
-      {% endif %}
-      {% if tags != '' %}
-        &nbsp; &middot; &nbsp;
-        {% for tag in page.tags %}
-          {% if url_beginning == '/blog/' %}
-            <a href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}"> <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}</a>
-          {% else %}
-            <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}
-          {% endif %}
-          {% unless forloop.last %}
-            &nbsp;
-          {% endunless %}
-        {% endfor %}
-      {% endif %}
+   <div class="post-header-inner">
+    <div class="post-meta-row">
+      <p class="post-meta">
+        作成日: {{ page.date | date: '%Y年%-m月%-d日' }}
+        {% if page.author %}・著者: {{ page.author }}{% endif %}
+        {% if page.last_updated %}・最終更新日: {{ page.last_updated | date: '%Y年%-m月%-d日' }}{% endif %}
+        {% if page.meta %}• {{ page.meta }}{% endif %}
+      </p>
+      <span class="post-divider"></span>
+      <p class="post-tags">
+        {% if url_beginning == '/blog/' %}
+          <a href="{{ year | prepend: '/blog/' | relative_url }}"> <i class="fa-solid fa-calendar fa-sm"></i> {{ year }} </a>
+        {% else %}
+          <i class="fa-solid fa-calendar fa-sm"></i> {{ year }}
+        {% endif %}
+        {% if tags != '' %}
+          &nbsp; &middot; &nbsp;
+          {% for tag in page.tags %}
+            {% if url_beginning == '/blog/' %}
+              <a href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}"> <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}</a>
+            {% else %}
+              <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}
+            {% endif %}
+            {% unless forloop.last %}
+              &nbsp;
+            {% endunless %}
+          {% endfor %}
+        {% endif %}
 
-      {% if categories != '' %}
-        &nbsp; &middot; &nbsp;
-        {% for category in page.categories %}
-          {% if url_beginning == '/blog/' %}
-            <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}"> <i class="fa-solid fa-tag fa-sm"></i> {{ category -}}</a>
-          {% else %}
-            <i class="fa-solid fa-tag fa-sm"></i> {{ category }}
-          {% endif %}
-          {% unless forloop.last %}
-            &nbsp;
-          {% endunless %}
-        {% endfor %}
-      {% endif %}
-    </p>
+        {% if categories != '' %}
+          &nbsp; &middot; &nbsp;
+          {% for category in page.categories %}
+            {% if url_beginning == '/blog/' %}
+              <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}"> <i class="fa-solid fa-tag fa-sm"></i> {{ category -}}</a>
+            {% else %}
+              <i class="fa-solid fa-tag fa-sm"></i> {{ category }}
+            {% endif %}
+            {% unless forloop.last %}
+              &nbsp;
+            {% endunless %}
+          {% endfor %}
+        {% endif %}
+      </p>
+    </div>
+    <h1 class="post-title">{{ page.title }}</h1>
+   </div>
   </header>
 
   <article class="post-content">
