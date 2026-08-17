@@ -19,8 +19,12 @@ body {
 }
 
 body.fixed-top-nav {
-  // Add some padding for the nav-bar.
-  padding-top: 57px;
+  // Add some padding for the nav-bar. Must match the navbar's actual
+  // rendered height (padding + border + tallest child, currently the
+  // #light-toggle button) — progress-bar.js re-measures this via JS on
+  // load and overwrites this value, so a mismatch causes a visible
+  // content jump/shift right after the page loads.
+  padding-top: 53px;
 }
 
 body.sticky-bottom-footer {
@@ -196,6 +200,29 @@ footer .container {
     &:hover {
       color: var(--title);
     }
+  }
+}
+
+// About page — same generous reading typography as the blog article body,
+// applied in place (no width/padding changes, since it shares the layout
+// with the profile image float).
+.about-content {
+  font-size: 16px;
+  line-height: 2.05;
+  color: var(--text);
+
+  p {
+    margin: 0 0 28px;
+  }
+
+  blockquote:not(.block-tip):not(.block-warning):not(.block-danger) {
+    background: transparent;
+    margin: 36px 0;
+    padding: 0 0 0 20px;
+    border-left: 2px solid var(--accent);
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--quote-text);
   }
 }
 
