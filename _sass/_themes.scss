@@ -8,14 +8,14 @@
   color-scheme: light;
 
   // Terracotta palette (light)
-  --bg: oklch(0.97 0.008 60);
+  --bg: oklch(0.99 0 0);
   --text: oklch(0.35 0.015 50);
   --border: oklch(0.88 0.012 55);
   --mono-bg: oklch(0.58 0.11 42);
   --mono-text: oklch(0.98 0.008 55);
   --muted: oklch(0.5 0.015 50);
   --accent: oklch(0.58 0.11 42);
-  --header-grad: linear-gradient(180deg, oklch(0.92 0.045 48), oklch(0.97 0.008 60) 90%);
+  --header-grad: linear-gradient(180deg, oklch(0.92 0.045 48), var(--bg) 90%);
   --title: oklch(0.22 0.02 48);
   --quote-text: oklch(0.4 0.05 45);
   --footer-muted: oklch(0.55 0.015 50);
