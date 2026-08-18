@@ -322,6 +322,7 @@ ul.task-list input[type="checkbox"] {
   height: 32px;
   box-sizing: border-box;
   border-radius: 8px;
+  margin-right: 4px;
 
   img {
     display: block;
@@ -387,7 +388,7 @@ html[data-theme="dark"] .nav-monogram {
   .navbar-brand {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
     color: var(--global-text-color);
     font-size: 14px;
     font-weight: 600;
