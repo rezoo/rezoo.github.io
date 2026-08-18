@@ -251,6 +251,13 @@ ul.task-list input[type="checkbox"] {
   border-bottom: 1px solid var(--global-divider-color);
   background-color: var(--global-bg-color);
   opacity: 0.95;
+  // Pin the navbar to a fixed height (border included, box-sizing:border-box)
+  // instead of letting it float with content/font metrics. Otherwise its
+  // rendered height can shift slightly depending on whether Noto Sans JP has
+  // finished loading yet, which desyncs it from body's hardcoded
+  // padding-top below and from progress-bar.js's runtime re-measurement —
+  // causing a visible content jump right after load.
+  height: 53px;
 }
 
 .nav-monogram {
