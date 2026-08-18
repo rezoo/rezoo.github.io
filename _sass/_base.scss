@@ -759,6 +759,10 @@ footer.sticky-bottom {
     &.active .page-link {
       color: var(--global-hover-text-color);
       background-color: var(--global-theme-color);
+      // MDB bakes the same neutral-gray z-depth-1 shadow into
+      // .page-item.active .page-link that we already stripped off the
+      // profile photo — same clash with this site's flat, shadow-free look.
+      box-shadow: none;
 
       &:hover {
         background-color: var(--global-theme-color);
