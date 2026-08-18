@@ -251,6 +251,12 @@ ul.task-list input[type="checkbox"] {
   border-bottom: 1px solid var(--global-divider-color);
   background-color: var(--global-bg-color);
   opacity: 0.95;
+  // Bootstrap's default component padding (.5rem 1rem) would otherwise stack
+  // on top of .navbar > .container's own 32px gutter below, pushing the
+  // brand/monogram 16px further in than the body content it should align
+  // with. The 32px gutter is the only horizontal inset we want here.
+  padding-left: 0;
+  padding-right: 0;
   // Pin the navbar to a fixed height (border included, box-sizing:border-box)
   // instead of letting it float with content/font metrics. Otherwise its
   // rendered height can shift slightly depending on whether Noto Sans JP has
@@ -258,6 +264,18 @@ ul.task-list input[type="checkbox"] {
   // padding-top below and from progress-bar.js's runtime re-measurement —
   // causing a visible content jump right after load.
   height: 53px;
+}
+
+// ...except while the mobile dropdown is open (or animating open/closed):
+// let the bar grow to actually enclose it. Otherwise the menu overflows the
+// pinned 53px box with no background of its own, rendering over the page
+// content underneath instead of on an opaque bar. This only ever applies
+// post-interaction (after the user taps the toggle), so it can't race the
+// font-swap the fixed height above is guarding against.
+.navbar:has(.navbar-collapse.show),
+.navbar:has(.navbar-collapse.collapsing) {
+  height: auto;
+  min-height: 53px;
 }
 
 .nav-monogram {
