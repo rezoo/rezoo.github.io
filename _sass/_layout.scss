@@ -49,6 +49,18 @@ footer .container {
   padding-right: 32px;
 }
 
+// Bootstrap's base flex-wrap:wrap only stops mattering once the (now-removed)
+// navbar-expand-sm breakpoint forces nowrap at >=576px. Below that, brand and
+// .navbar-nav sit close enough to the fit boundary that the auto-margin
+// docking .navbar-nav right can trip the wrap decision at ~320-340px,
+// dropping nav links to their own line below the pinned-height navbar — where
+// they render with no background since the bar doesn't grow to enclose them.
+// Force nowrap unconditionally instead: items shrink slightly rather than
+// wrap if a viewport is ever narrower than the content needs.
+.navbar > .container {
+  flex-wrap: nowrap;
+}
+
 .blog-container {
   padding-left: 0;
   padding-right: 0;

@@ -266,16 +266,13 @@ ul.task-list input[type="checkbox"] {
   height: 53px;
 }
 
-// ...except while the mobile dropdown is open (or animating open/closed):
-// let the bar grow to actually enclose it. Otherwise the menu overflows the
-// pinned 53px box with no background of its own, rendering over the page
-// content underneath instead of on an opaque bar. This only ever applies
-// post-interaction (after the user taps the toggle), so it can't race the
-// font-swap the fixed height above is guarding against.
-.navbar:has(.navbar-collapse.show),
-.navbar:has(.navbar-collapse.collapsing) {
-  height: auto;
-  min-height: 53px;
+// This nav has no collapse/hamburger — about, blog, and the theme toggle are
+// always shown in a single row at every width (this site only ever has 2 nav
+// links, which comfortably fits down to the smallest realistic viewport).
+// Force row layout unconditionally instead of relying on Bootstrap's
+// navbar-expand-sm, which only switches .navbar-nav to row at >=576px.
+.navbar-nav {
+  flex-direction: row;
 }
 
 .nav-monogram {
@@ -402,46 +399,6 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
-.navbar-toggler {
-  .icon-bar {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background-color: var(--global-text-color);
-    border-radius: 1px;
-    margin-bottom: 4px;
-    transition: all 0.2s;
-  }
-
-  .top-bar {
-    transform: rotate(45deg);
-    transform-origin: 10% 10%;
-  }
-
-  .middle-bar {
-    opacity: 0;
-  }
-
-  .bottom-bar {
-    transform: rotate(-45deg);
-    transform-origin: 10% 90%;
-  }
-}
-
-.navbar-toggler.collapsed {
-  .top-bar {
-    transform: rotate(0);
-  }
-
-  .middle-bar {
-    opacity: 1;
-  }
-
-  .bottom-bar {
-    transform: rotate(0);
-  }
-}
-
 #light-toggle,
 #search-toggle {
   padding: 0;
@@ -457,15 +414,6 @@ ul.task-list input[type="checkbox"] {
 .toggle-container {
   display: flex;
   align-items: center;
-  // The mobile dropdown stacks .nav-item lis full-width and right-aligns
-  // their (inline) content via .navbar-collapse's text-right — but this li
-  // became a flex container for desktop's row layout, and flex items ignore
-  // text-align, so the toggle button fell back to the flex default
-  // (flex-start) and sat on the left instead. justify-content:flex-end
-  // restores the right alignment there; it's a no-op at desktop widths
-  // since this li is already exactly as wide as the button in the row
-  // layout, with no extra space to justify.
-  justify-content: flex-end;
   margin-left: 8px;
 }
 
