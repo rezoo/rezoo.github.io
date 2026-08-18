@@ -6,15 +6,10 @@
   <nav id="navbar" class="navbar navbar-light {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
     <div class="container">
       {% if page.permalink != '/' %}
-        {% if site.title == 'blank' %}
-          {% assign nav_monogram = site.first_name | slice: 0, 1 %}
-        {% else %}
-          {% assign nav_monogram = site.title | slice: 0, 1 %}
-        {% endif %}
         <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
-          {% if nav_monogram %}
-            <span class="nav-monogram">{{- nav_monogram -}}</span>
-          {% endif %}
+          <span class="nav-monogram">
+            <img src="{{ '/assets/img/angel-icon.svg' | relative_url | bust_file_cache }}" alt="" width="32" height="32">
+          </span>
           {% if site.title == 'blank' %}
             {% if site.first_name %}
               <span class="font-weight-bold">

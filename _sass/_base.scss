@@ -317,16 +317,27 @@ ul.task-list input[type="checkbox"] {
 
 .nav-monogram {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--mono-bg);
-  color: var(--mono-text);
-  font-size: 13px;
-  font-weight: 800;
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// The icon's dark navy hair (and the wing/halo tones) were drawn against a
+// light cream backdrop, so it reads fine on the light navbar background
+// (nearly the same color) but nearly disappears into the dark theme's dark
+// navbar. Give it back that light backdrop, but only in dark mode where it's
+// actually needed.
+html[data-theme="dark"] .nav-monogram {
+  background: #fdf9f3;
+  padding: 3px;
 }
 
 .navbar .dropdown-menu,
@@ -383,8 +394,23 @@ ul.task-list input[type="checkbox"] {
   }
 
   .navbar-nav .nav-item .nav-link {
+    // Own this outright instead of leaning on inherited padding: MDB ships
+    // `@media (max-width:992px){.navbar .nav-item .nav-link{padding:6px}}`,
+    // equal specificity to this rule and a match at nearly every width we
+    // ever tested (mobile through most laptops), which is what made the gap
+    // between nav-items look fine right up until removing the now-unused
+    // navbar-expand-sm class also removed Bootstrap's >=576px padding
+    // fallback — silently dropping to 0 padding above MDB's 992px cutoff.
     color: var(--muted);
     font-size: 13px;
+    // 6px (not the 8px Bootstrap's now-removed navbar-expand-sm rule used
+    // above 576px) to match the width MDB's rule was already contributing
+    // at every width this nav was actually verified against — anything
+    // more reopens the narrow-viewport overflow this same nav was fixed
+    // for earlier (.navbar > .container's flex-wrap:nowrap has no slack
+    // left to spare at ~320-375px).
+    padding-left: 6px;
+    padding-right: 6px;
 
     &:hover {
       color: var(--global-hover-color);
