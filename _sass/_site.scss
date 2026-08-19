@@ -12,9 +12,12 @@
   --footer-muted: oklch(0.55 0.015 50);
   --tag: oklch(0.5 0.1 42);
 
-  // Aliases below just forward to the theme tokens above, so they resolve
-  // correctly for both themes without being redeclared per theme — only the
-  // two literal (non-aliased) values below vary and need a dark override.
+  // These `--global-*` names are also declared (with different values) by
+  // the gem's `_themes.scss` on the same `html[data-theme="dark"]` selector,
+  // which has higher specificity than a bare `:root`. So the dark-mode
+  // aliases below must be redeclared on that exact selector (not just
+  // `:root`) or the gem's higher-specificity dark rule wins regardless of
+  // source order — they can't be deduped into a single unconditional block.
   --global-bg-color: var(--bg);
   --global-text-color: var(--text);
   --global-text-color-light: var(--muted);
@@ -25,11 +28,10 @@
   --global-footer-text-color: var(--footer-muted);
   --global-footer-link-color: var(--accent);
   --global-divider-color: var(--border);
-  --global-newsletter-bg-color: var(--bg);
-  --global-newsletter-text-color: var(--text);
-
   --global-code-bg-color: oklch(0.58 0.11 42 / 6%);
   --global-card-bg-color: oklch(0.99 0.006 60);
+  --global-newsletter-bg-color: var(--bg);
+  --global-newsletter-text-color: var(--text);
 }
 
 html[data-theme="dark"] {
@@ -46,8 +48,20 @@ html[data-theme="dark"] {
   --footer-muted: oklch(0.58 0.01 55);
   --tag: oklch(0.85 0.09 48);
 
+  --global-bg-color: var(--bg);
+  --global-text-color: var(--text);
+  --global-text-color-light: var(--muted);
+  --global-theme-color: var(--accent);
+  --global-hover-color: var(--accent);
+  --global-hover-text-color: var(--mono-text);
+  --global-footer-bg-color: var(--bg);
+  --global-footer-text-color: var(--footer-muted);
+  --global-footer-link-color: var(--accent);
+  --global-divider-color: var(--border);
   --global-code-bg-color: oklch(0.24 0.016 45);
   --global-card-bg-color: oklch(0.22 0.016 45);
+  --global-newsletter-bg-color: var(--bg);
+  --global-newsletter-text-color: var(--text);
 }
 
 body {
@@ -165,6 +179,23 @@ html[data-theme="dark"] .nav-monogram {
   display: flex;
   align-items: center;
   margin-left: 8px;
+}
+
+// vanilla-back-to-top's inline <style> sizes the icon and its margin-top
+// as a percentage of the *library's* default 56px diameter (it's called
+// with no config, see _includes/scripts.liquid), but the gem shrinks the
+// button itself to 40px via $back-to-top-diameter — that stale margin then
+// eats the button's full height and pins the icon to the bottom. Flexbox
+// centering here is independent of that margin, so it stays correct
+// regardless of which diameter the button ends up at.
+#back-to-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#back-to-top svg {
+  margin: 0;
 }
 
 #light-toggle {
