@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="{{ site.lang }}">
-  <!-- Head -->
   <head>
     {% if page.redirect %}
       {% if page.redirect == true %}
@@ -15,30 +14,37 @@
     {% include head.liquid %}
   </head>
 
-  <!-- Body -->
   <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
-    <!-- Header -->
     {% include header.liquid %}
 
-    <!-- Content -->
     <div class="container {% if page.layout == 'post' or page.blog_layout %}blog-container{% else %}mt-5{% endif %}" role="main">
       {% if page.toc and page.toc.sidebar %}
+        {% assign toc_collapse = page.toc.collapse | default: 'expanded' %}
+        {% assign toc_collapse_depth = page.toc.collapse_depth | default: '' %}
         {% if page.toc.sidebar == 'right' %}
           <div class="row">
-            <!-- main content area -->
             <div class="col-sm-9">{{ content }}</div>
-            <!-- sidebar, which will move to the top on a small screen -->
             <div class="col-sm-3">
-              <nav id="toc-sidebar" class="sticky-top"></nav>
+              <nav
+                id="toc-sidebar"
+                class="sticky-top toc toc-sidebar"
+                aria-label="Table of contents"
+                data-toc-collapse="{{ toc_collapse }}"
+                data-toc-collapse-depth="{{ toc_collapse_depth }}"
+              ></nav>
             </div>
           </div>
         {% else %}
           <div class="row">
-            <!-- sidebar, which will move to the top on a small screen -->
             <div class="col-sm-3">
-              <nav id="toc-sidebar" class="sticky-top"></nav>
+              <nav
+                id="toc-sidebar"
+                class="sticky-top toc toc-sidebar"
+                aria-label="Table of contents"
+                data-toc-collapse="{{ toc_collapse }}"
+                data-toc-collapse-depth="{{ toc_collapse_depth }}"
+              ></nav>
             </div>
-            <!-- main content area -->
             <div class="col-sm-9">{{ content }}</div>
           </div>
         {% endif %}
@@ -47,10 +53,7 @@
       {% endif %}
     </div>
 
-    <!-- Footer -->
     {% include footer.liquid %}
-
-    <!-- JavaScripts -->
     {% include scripts.liquid %}
   </body>
 </html>
