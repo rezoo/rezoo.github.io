@@ -97,7 +97,6 @@ exclude:
   - docker-compose.yml
   - Gemfile
   - Gemfile.lock
-  - idea.png
   - LICENSE
   - package.json
   - package-lock.json
