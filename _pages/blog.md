@@ -29,7 +29,7 @@ pagination:
 
 <nav class="tag-category-list" aria-label="記事タグ">
 {% for tag in site.display_tags %}
-<a href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">
+<a href="{{ tag | slugify | prepend: '/blog/tag/' | append: '/' | relative_url }}">
 <i class="fa-solid fa-hashtag fa-sm"></i>
 {{ tag }}
 </a>
@@ -71,13 +71,13 @@ pagination:
           {% if post.tags.size > 0 or post.categories.size > 0 %}
             <p class="post-tags">
               {% for tag in post.tags %}
-                <a href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">
+                <a href="{{ tag | slugify | prepend: '/blog/tag/' | append: '/' | relative_url }}">
                   <i class="fa-solid fa-hashtag fa-sm"></i>
                   {{ tag }}
                 </a>
               {% endfor %}
               {% for category in post.categories %}
-                <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">
+                <a href="{{ category | slugify | prepend: '/blog/category/' | append: '/' | relative_url }}">
                   <i class="fa-solid fa-tag fa-sm"></i>
                   {{ category }}
                 </a>

@@ -24,14 +24,14 @@ layout: default
         </p>
         <span class="post-divider" aria-hidden="true"></span>
         <p class="post-tags">
-          <a href="{{ year | prepend: '/blog/' | relative_url }}">
+          <a href="{{ year | prepend: '/blog/' | append: '/' | relative_url }}">
             <i class="fa-solid fa-calendar fa-sm"></i>
             {{ year }}
           </a>
           {% if tags != '' %}
             &nbsp; &middot; &nbsp;
             {% for tag in page.tags %}
-              <a href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">
+              <a href="{{ tag | slugify | prepend: '/blog/tag/' | append: '/' | relative_url }}">
                 <i class="fa-solid fa-hashtag fa-sm"></i>
                 {{ tag }}
               </a>
@@ -41,7 +41,7 @@ layout: default
           {% if categories != '' %}
             &nbsp; &middot; &nbsp;
             {% for category in page.categories %}
-              <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">
+              <a href="{{ category | slugify | prepend: '/blog/category/' | append: '/' | relative_url }}">
                 <i class="fa-solid fa-tag fa-sm"></i>
                 {{ category }}
               </a>

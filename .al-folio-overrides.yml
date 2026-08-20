@@ -48,8 +48,8 @@ overrides:
     gem_version: 1.0.15
     upstream_path: _layouts/post.liquid
     upstream_sha256: b70376c20e97692e319650efd8db6e224439f4ea3257bc32a04b3299d54ad94b
-    local_sha256: ba5673528954428cf30d22e69394ea6bf80674ce59abab2a4d879c3e2337bdc9
-    acknowledged_at: '2026-08-18'
+    local_sha256: 031d507ba06366e4d75cd62e9e3171548d1ebd0065c8b5a86f7f6e9922d93a8f
+    acknowledged_at: '2026-08-20'
   assets/css/main.scss:
     owner: al_folio_core
     gem_version: 1.0.15
