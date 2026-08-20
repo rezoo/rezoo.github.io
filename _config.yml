@@ -72,7 +72,7 @@ pagination:
 related_blog_posts:
   enabled: false
   max_related: 5
-display_tags: ["tech", "frontend"]
+display_tags: ["essay", "academia", "tech", "frontend"]
 display_categories: []
 
 # Markdown
