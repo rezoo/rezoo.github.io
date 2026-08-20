@@ -25,7 +25,7 @@
   // Hero band. The artwork ships as SVG: it is the band's full width on every
   // screen, so a raster would either be soft on HiDPI or far heavier than the
   // ~13KB (gzipped) this costs. `--hero-art` is the per-theme half.
-  --hero-height: clamp(230px, 23vw, 360px);
+  --hero-height: clamp(300px, 23vw, 360px);
   --hero-art: url("/assets/img/background-light.svg");
   --hero-size: cover;
   --hero-position: center center;
@@ -846,8 +846,33 @@ html[data-theme="dark"] .chat-board {
 // element — in frame, and a ~2:1 band height keeps the sage edge just visible.
 @media (max-width: 767.98px) {
   :root {
-    --hero-height: clamp(180px, 48vw, 300px);
+    // Two things go wrong on a narrow band, and both land on the page title.
+    //
+    // `cover` on a 3:1 image means a shorter band is a *wider* crop, so at
+    // 48vw the visible slice was wide enough to be mostly the artwork's empty
+    // cream centre — the part it was drawn to leave clear for text. Zooming in
+    // (a taller band) brings the left-hand coral forms up behind the title.
+    //
+    // The mask then compounds it: the title sits at a fixed ~81-117px from the
+    // top, which on a 187px band is 43-62% of the way down — inside the
+    // shared fade, which starts at 38%. On the 331px desktop band the same
+    // title sits at 33-48%, above the fade entirely. So the phone was
+    // dissolving the artwork exactly where the title needed it. Hold full
+    // opacity until 66% here; the band is short enough that the remaining
+    // third is still a comfortable blend.
+    //
+    // The 300px ceiling meets the desktop rule's 300px floor, so the band no
+    // longer jumps in height when crossing this breakpoint.
+    --hero-height: clamp(230px, 62vw, 300px);
     --hero-position: left center;
+    --hero-mask: linear-gradient(
+      180deg,
+      rgb(0 0 0 / 100%) 0%,
+      rgb(0 0 0 / 100%) 66%,
+      rgb(0 0 0 / 62%) 82%,
+      rgb(0 0 0 / 22%) 93%,
+      rgb(0 0 0 / 0%) 100%
+    );
   }
 }
 
