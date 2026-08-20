@@ -449,13 +449,15 @@ html[data-theme="dark"] .nav-monogram {
   margin: 0 0 28px;
 }
 
-.latest-posts {
+.latest-posts,
+.archive-list {
   margin: 0 0 1rem;
   padding: 0;
   list-style: none;
 }
 
-.latest-posts li {
+.latest-posts li,
+.archive-list li {
   display: grid;
   grid-template-columns: minmax(8.5rem, auto) 1fr;
   gap: 1rem;
@@ -463,11 +465,13 @@ html[data-theme="dark"] .nav-monogram {
   border-bottom: 1px solid var(--border);
 }
 
-.latest-posts li:first-child {
+.latest-posts li:first-child,
+.archive-list li:first-child {
   border-top: 1px solid var(--border);
 }
 
-.latest-posts time {
+.latest-posts time,
+.archive-list time {
   color: var(--muted);
   font-size: 0.85rem;
   font-variant-numeric: tabular-nums;
@@ -507,6 +511,26 @@ html[data-theme="dark"] .nav-monogram {
 /*******************************************************************************
  * Blog index
  ******************************************************************************/
+
+.archive-page > .post-header {
+  padding-block: 26px 24px;
+}
+
+.archive-page .post-title {
+  margin: 0;
+  color: var(--title);
+  // Matches `.blog-list .header-bar h1`; the gem's default leaves the archive
+  // heading noticeably larger than the blog index it sits next to.
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.archive-page .post-description {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
 
 .blog-list .header-bar {
   padding: 2.5rem 0 2rem;
@@ -877,7 +901,8 @@ html[data-theme="dark"] .chat-board {
     padding: 1.75rem 0 1.5rem;
   }
 
-  .blog-list .header-bar h1 {
+  .blog-list .header-bar h1,
+  .archive-page .post-title {
     font-size: 1.85rem;
   }
 
@@ -895,7 +920,8 @@ html[data-theme="dark"] .chat-board {
     padding-bottom: 64px;
   }
 
-  .latest-posts li {
+  .latest-posts li,
+  .archive-list li {
     grid-template-columns: 1fr;
     gap: 0.15rem;
   }
