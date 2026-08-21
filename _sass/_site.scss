@@ -419,10 +419,9 @@ html[data-theme="dark"] .nav-monogram {
 .profile-photo-frame {
   display: block;
   width: 100%;
-  padding: 4px;
+  padding: 2px;
   border-radius: 0.375rem;
-  background: linear-gradient(135deg, var(--accent), var(--title));
-  box-shadow: var(--shadow-soft);
+  background: oklch(0.79 0 0);
 }
 
 .profile-photo-frame.circular {
