@@ -59,6 +59,7 @@ max_width: 930px
 serve_og_meta: true
 serve_schema_org: false
 og_image: https://rezoo.github.io/assets/img/prof_pic.jpg
+x_username: rezoolab
 google_site_verification:
 bing_site_verification:
 
