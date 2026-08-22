@@ -1,38 +1,45 @@
 ---
 layout: default
 ---
-<div class="post">
+<div class="post archive-page">
   <header class="post-header">
     {% if page.type == 'categories' %}
       <h1 class="post-title"><i class="fa-solid fa-tag fa-sm"></i> {{ page.title }}</h1>
-      <p class="post-description">an archive of {{ page.collection_name }} in this category</p>
+      <p class="post-description">このカテゴリの記事一覧</p>
     {% elsif page.type == 'year' %}
-      <h1 class="post-title"><i class="fa-solid fa-calendar fa-sm"></i> {{ page.date | date: '%Y' }}</h1>
-      <p class="post-description">an archive of {{ page.collection_name }} from this year</p>
+      <h1 class="post-title"><i class="fa-solid fa-calendar fa-sm"></i> {{ page.date | date: '%Y' }}年</h1>
+      <p class="post-description">この年の記事一覧</p>
     {% elsif page.type == 'tags' %}
       <h1 class="post-title"><i class="fa-solid fa-hashtag fa-sm"></i> {{ page.title }}</h1>
-      <p class="post-description">an archive of {{ page.collection_name }} with this tag</p>
+      <p class="post-description">このタグが付いた記事一覧</p>
     {% endif %}
   </header>
 
   <article class="archive">
-    <div class="table-responsive">
-      <table class="table table-sm table-borderless">
-        {% for document in page.documents %}
-          <tr>
-            <th scope="row">{{ document.date | date: '%Y年%-m月%-d日' }}</th>
-            <td>
-              {% if document.redirect == blank %}
-                <a class="post-link" href="{{ document.url | relative_url }}">{{ document.title }}</a>
-              {% elsif document.redirect contains '://' %}
-                <a class="post-link" href="{{ document.redirect }}" target="_blank">{{ document.title }}</a>
-              {% else %}
-                <a class="post-link" href="{{ document.redirect | relative_url }}">{{ document.title }}</a>
-              {% endif %}
-            </td>
-          </tr>
-        {% endfor %}
-      </table>
-    </div>
+    <ul class="archive-list">
+      {% comment %}
+        Upstream tests the redirect with an `== blank` comparison. page.documents
+        yields Jekyll document drops, on which a missing key returns Ruby nil,
+        and nil does not compare equal to Liquid's `blank` literal -- so that
+        test is false for every post without a redirect, the else branch runs,
+        and piping nil through relative_url renders href="". That left every
+        link on every archive page empty. Testing truthiness instead (the same
+        idiom _pages/blog.md already uses) is what actually works.
+      {% endcomment %}
+      {% for document in page.documents %}
+        <li>
+          <time datetime="{{ document.date | date_to_xmlschema }}">{{ document.date | date: '%Y年%-m月%-d日' }}</time>
+          {% if document.redirect %}
+            {% if document.redirect contains '://' %}
+              <a class="post-link" href="{{ document.redirect }}" target="_blank" rel="external nofollow noopener">{{ document.title }}</a>
+            {% else %}
+              <a class="post-link" href="{{ document.redirect | relative_url }}">{{ document.title }}</a>
+            {% endif %}
+          {% else %}
+            <a class="post-link" href="{{ document.url | relative_url }}">{{ document.title }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
   </article>
 </div>
