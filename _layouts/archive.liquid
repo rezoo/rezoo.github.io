@@ -4,13 +4,22 @@ layout: default
 <div class="post archive-page">
   <header class="post-header">
     {% if page.type == 'categories' %}
-      <h1 class="post-title"><i class="fa-solid fa-tag fa-sm"></i> {{ page.title }}</h1>
+      <h1 class="post-title">
+        {% include icon.liquid name="tag-line" class="mgc-sm" %}
+        {{ page.title }}
+      </h1>
       <p class="post-description">このカテゴリの記事一覧</p>
     {% elsif page.type == 'year' %}
-      <h1 class="post-title"><i class="fa-solid fa-calendar fa-sm"></i> {{ page.date | date: '%Y' }}年</h1>
+      <h1 class="post-title">
+        {% include icon.liquid name="calendar-line" class="mgc-sm" %}
+        {{ page.date | date: '%Y' }}年
+      </h1>
       <p class="post-description">この年の記事一覧</p>
     {% elsif page.type == 'tags' %}
-      <h1 class="post-title"><i class="fa-solid fa-hashtag fa-sm"></i> {{ page.title }}</h1>
+      <h1 class="post-title">
+        {% include icon.liquid name="hashtag-line" class="mgc-sm" %}
+        {{ page.title }}
+      </h1>
       <p class="post-description">このタグが付いた記事一覧</p>
     {% endif %}
   </header>

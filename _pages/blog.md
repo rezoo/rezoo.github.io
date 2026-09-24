@@ -30,7 +30,7 @@ pagination:
 <nav class="tag-category-list" aria-label="記事タグ">
 {% for tag in site.display_tags %}
 <a href="{{ tag | slugify | prepend: '/blog/tag/' | append: '/' | relative_url }}">
-<i class="fa-solid fa-hashtag fa-sm"></i>
+{% include icon.liquid name="hashtag-line" class="mgc-sm" %}
 {{ tag }}
 </a>
 {% endfor %}
@@ -72,13 +72,13 @@ pagination:
             <p class="post-tags">
               {% for tag in post.tags %}
                 <a href="{{ tag | slugify | prepend: '/blog/tag/' | append: '/' | relative_url }}">
-                  <i class="fa-solid fa-hashtag fa-sm"></i>
+                  {% include icon.liquid name="hashtag-line" class="mgc-sm" %}
                   {{ tag }}
                 </a>
               {% endfor %}
               {% for category in post.categories %}
                 <a href="{{ category | slugify | prepend: '/blog/category/' | append: '/' | relative_url }}">
-                  <i class="fa-solid fa-tag fa-sm"></i>
+                  {% include icon.liquid name="tag-line" class="mgc-sm" %}
                   {{ category }}
                 </a>
               {% endfor %}

@@ -1,0 +1,20 @@
+{%- assign socials = site.data.socials -%}
+{%- if socials.email -%}
+  <a href="mailto:{{ socials.email }}" title="Email" aria-label="Email">{% include icon.liquid name="mail-line" %}</a>
+{%- endif -%}
+{%- if socials.github_username -%}
+  <a href="https://github.com/{{ socials.github_username }}" title="GitHub" aria-label="GitHub">{% include icon.liquid name="github-line" %}</a>
+{%- endif -%}
+{%- if socials.linkedin_username -%}
+  <a href="https://www.linkedin.com/in/{{ socials.linkedin_username }}" title="LinkedIn" aria-label="LinkedIn">
+    {%- include icon.liquid name="linkedin-line" -%}
+  </a>
+{%- endif -%}
+{%- if socials.scholar_userid -%}
+  <a href="https://scholar.google.com/citations?user={{ socials.scholar_userid }}" title="Google Scholar" aria-label="Google Scholar">
+    {%- include icon.liquid name="mortarboard-line" -%}
+  </a>
+{%- endif -%}
+{%- if socials.x_username -%}
+  <a href="https://x.com/{{ socials.x_username }}" title="X" aria-label="X">{% include icon.liquid name="social-x-line" %}</a>
+{%- endif -%}

@@ -33,9 +33,9 @@
         {% if site.enable_darkmode %}
           <li class="toggle-container">
             <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme">
-              <i class="fa-half-sun-moon" id="light-toggle-system"></i>
-              <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
-              <i class="fa-solid fa-sun" id="light-toggle-light"></i>
+              <span id="light-toggle-system">{% include icon.liquid name="moon-stars-line" %}</span>
+              <span id="light-toggle-dark">{% include icon.liquid name="moon-line" %}</span>
+              <span id="light-toggle-light">{% include icon.liquid name="sun-line" %}</span>
             </button>
           </li>
         {% endif %}

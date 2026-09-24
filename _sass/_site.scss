@@ -97,6 +97,24 @@ html[data-theme="dark"] {
 }
 
 /*******************************************************************************
+ * Icons
+ *
+ * Inline MingCute SVGs (_includes/icon.liquid). They scale with the font size
+ * and take the text colour, like the icon font they replace.
+ ******************************************************************************/
+
+.mgc {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
+
+.mgc-sm {
+  font-size: 0.875em;
+}
+
+/*******************************************************************************
  * Page shell
  ******************************************************************************/
 
@@ -302,9 +320,8 @@ html[data-theme="dark"] .nav-monogram {
     background 0.18s ease;
 }
 
-#light-toggle i {
+#light-toggle .mgc {
   display: block;
-  line-height: 1;
 }
 
 #light-toggle:hover {
@@ -502,6 +519,14 @@ html[data-theme="dark"] .nav-monogram {
   transition:
     color 0.18s ease,
     transform 0.18s ease;
+}
+
+// The theme sizes `.contact-icons a svg` for image logos; keep ours at 1em.
+.social .contact-icons a .mgc {
+  display: block;
+  width: 1em;
+  height: 1em;
+  margin: 0;
 }
 
 .social .contact-icons a:hover {
