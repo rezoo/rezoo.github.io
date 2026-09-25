@@ -46,6 +46,14 @@
   // the `.mt-5` margin on containers that have one (set on those below).
   --hero-nav: 53px;
   --hero-top: var(--hero-nav);
+  // Wide screens: a floor on the art's height, tied to the viewport width.
+  // A one-line title makes a shallow band, and fitting the art into it
+  // leaves two small corner pieces a long way apart. Past this floor the
+  // pieces grow into the band's lower edge and the curve cuts through them;
+  // deeper bands (longer titles) still fit the whole artwork.
+  --hero-art-min: min(20vw, 380px);
+  // Phones: how far the right piece is pushed past the right edge (below).
+  --hero-right-shift: 0px;
 
   // These `--global-*` names are also declared (with different values) by
   // the gem's `_themes.scss` on the same `html[data-theme="dark"]` selector,
@@ -155,8 +163,8 @@ body.fixed-top-nav {
 // The mask's first layer is a single flat colour (a gradient only in
 // syntax): it keeps the band opaque down to the curve's strip.
 %hero-cut {
-  --hero-art-left-size: calc(100% - var(--hero-nav));
-  --hero-art-right-size: calc((100% - var(--hero-nav) - var(--hero-curve)) * 1124 / 724);
+  --hero-art-left-size: max(100% - var(--hero-nav), var(--hero-art-min));
+  --hero-art-right-size: calc(max(100% - var(--hero-nav) - var(--hero-curve), var(--hero-art-min)) * 1124 / 724);
 
   position: relative;
   padding-bottom: calc(var(--hero-room) + var(--hero-after, 0px));
@@ -168,7 +176,7 @@ body.fixed-top-nav {
     inset-inline: calc(50% - 50vw);
     background:
       var(--hero-art-left) left 0 top var(--hero-nav) / auto var(--hero-art-left-size) no-repeat,
-      var(--hero-art-right) right 0 top var(--hero-nav) / auto var(--hero-art-right-size) no-repeat,
+      var(--hero-art-right) right calc(-1 * var(--hero-right-shift)) top var(--hero-nav) / auto var(--hero-art-right-size) no-repeat,
       var(--hero-bg);
     content: "";
     mask-image: linear-gradient(#000 0 0), var(--hero-cut);
@@ -916,13 +924,22 @@ html[data-theme="dark"] .chat-board {
  ******************************************************************************/
 
 // Squeezed into a phone's width, the desktop curve would turn into a steep
-// double wave, so this breakpoint swaps in a single, shallower one, and a
-// shallower cut to match the tighter header spacing.
+// double wave, so this breakpoint swaps in a single, shallower one that dips
+// only under the left piece and stays high under the right one (which ends
+// at the top of the curve's strip), and a shallower cut to match the tighter
+// header spacing.
+//
+// The band is too narrow here for both art pieces side by side, so the left
+// one (the forms behind the title) keeps its full size and the right one is
+// pushed partly off the right edge, trading its outer part for some open
+// ground between the two. The art-height floor is for wide screens only.
 @media (max-width: 767.98px) {
   :root {
     --hero-cut: url("/assets/img/hero-cut-mobile.svg");
     --hero-gap: 12px;
     --hero-curve: 36px;
+    --hero-art-min: 0px;
+    --hero-right-shift: 12vw;
   }
 }
 
