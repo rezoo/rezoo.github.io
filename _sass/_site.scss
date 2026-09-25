@@ -3,8 +3,8 @@
  *
  * Every colour here is unchanged from before the hero-artwork pass — the page,
  * card, code and footer surfaces in particular. The artwork is layered on top
- * as a masked band (`body::before`) that fades out into whatever `--bg` is,
- * rather than by re-tinting the site around it.
+ * as a band (`body::before`) whose lower edge is cut along a soft curve, drawn
+ * in flat colours with no fade, rather than by re-tinting the site around it.
  ******************************************************************************/
 
 :root {
@@ -29,17 +29,10 @@
   --hero-art: url("/assets/img/background-light.svg");
   --hero-size: cover;
   --hero-position: center center;
-  // Eased alpha ramp (not a straight 1 -> 0 line) so the band dissolves into
-  // the page background without leaving a Mach band at its lower edge.
-  --hero-mask: linear-gradient(
-    180deg,
-    rgb(0 0 0 / 100%) 0%,
-    rgb(0 0 0 / 100%) 38%,
-    rgb(0 0 0 / 88%) 54%,
-    rgb(0 0 0 / 58%) 70%,
-    rgb(0 0 0 / 24%) 86%,
-    rgb(0 0 0 / 0%) 100%
-  );
+  // The band's lower edge: an opaque SVG shape, stretched to the band's box
+  // (`preserveAspectRatio="none"` plus `mask-size: 100% 100%`), so the whole
+  // curve is always in frame whatever the viewport's aspect ratio.
+  --hero-mask: url("/assets/img/hero-edge.svg");
 
   // These `--global-*` names are also declared (with different values) by
   // the gem's `_themes.scss` on the same `html[data-theme="dark"]` selector,
@@ -145,7 +138,11 @@ body::before {
   background-size: var(--hero-size);
   content: "";
   mask-image: var(--hero-mask);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
   -webkit-mask-image: var(--hero-mask);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
   pointer-events: none;
 }
 
@@ -885,17 +882,16 @@ html[data-theme="dark"] .chat-board {
     // (a taller band) brings the left-hand coral forms up behind the title.
     //
     // The title sits at a fixed ~81-117px from the top (navbar height plus
-    // this breakpoint's header padding). At the 210px floor that's 39-56% of
-    // the way down — just past where the shared `--hero-mask` starts fading
-    // (38%) — but the ramp is still gentle there, so the title only dims to
-    // ~85% opacity at its worst. At the 300px ceiling it's 27-39%, essentially
-    // untouched. Shallow enough throughout that the root mask needs no
-    // override here, unlike the crop above.
+    // this breakpoint's header padding), well above the curve, which starts
+    // at ~83% of the band's height. Squeezed into a phone's width the
+    // desktop curve would turn into a steep double wave, so this breakpoint
+    // swaps in a single, shallower one.
     //
     // The 300px ceiling meets the desktop rule's 300px floor, so the band no
     // longer jumps in height when crossing this breakpoint.
     --hero-height: clamp(210px, 52vw, 300px);
     --hero-position: left center;
+    --hero-mask: url("/assets/img/hero-edge-mobile.svg");
   }
 }
 
