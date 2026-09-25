@@ -151,20 +151,14 @@ body.fixed-top-nav {
 // ends `--hero-after` above the header's bottom edge, i.e. at the lowest point
 // of the curve. A negative z-index keeps it behind all content.
 //
-// Both art pieces start below the navbar. The curve dips low on the left and
-// rises on the right, so each piece ends where the curve is on its side: the
-// left one at the curve's lowest point, so the curve only trims its forms
-// slightly; the right one at the top of the curve's strip, so the curve
-// crops nothing from it. The right piece's forms that meet its lower edge are
-// drawn on down past it (see the SVG), so where the curve dips below that
-// edge it cuts through them instead of exposing a straight line; the
-// `* 1124 / 724` accounts for that extra canvas.
+// Both art pieces start below the navbar and end at the curve's lowest
+// point. The curve dips near both edges, where the pieces sit, and rises in
+// the empty middle, so it only trims the pieces' lower edges slightly.
 //
 // The mask's first layer is a single flat colour (a gradient only in
 // syntax): it keeps the band opaque down to the curve's strip.
 %hero-cut {
-  --hero-art-left-size: max(100% - var(--hero-nav), var(--hero-art-min));
-  --hero-art-right-size: calc(max(100% - var(--hero-nav) - var(--hero-curve), var(--hero-art-min)) * 1124 / 724);
+  --hero-art-size: max(100% - var(--hero-nav), var(--hero-art-min));
 
   position: relative;
   padding-bottom: calc(var(--hero-room) + var(--hero-after, 0px));
@@ -175,8 +169,8 @@ body.fixed-top-nav {
     inset-block: calc(-1 * var(--hero-top)) var(--hero-after, 0px);
     inset-inline: calc(50% - 50vw);
     background:
-      var(--hero-art-left) left 0 top var(--hero-nav) / auto var(--hero-art-left-size) no-repeat,
-      var(--hero-art-right) right calc(-1 * var(--hero-right-shift)) top var(--hero-nav) / auto var(--hero-art-right-size) no-repeat,
+      var(--hero-art-left) left 0 top var(--hero-nav) / auto var(--hero-art-size) no-repeat,
+      var(--hero-art-right) right calc(-1 * var(--hero-right-shift)) top var(--hero-nav) / auto var(--hero-art-size) no-repeat,
       var(--hero-bg);
     content: "";
     mask-image: linear-gradient(#000 0 0), var(--hero-cut);
@@ -924,10 +918,8 @@ html[data-theme="dark"] .chat-board {
  ******************************************************************************/
 
 // Squeezed into a phone's width, the desktop curve would turn into a steep
-// double wave, so this breakpoint swaps in a single, shallower one that dips
-// only under the left piece and stays high under the right one (which ends
-// at the top of the curve's strip), and a shallower cut to match the tighter
-// header spacing.
+// double wave, so this breakpoint swaps in a single, shallower arch, and a
+// shallower cut to match the tighter header spacing.
 //
 // The band is too narrow here for both art pieces side by side, so the left
 // one (the forms behind the title) keeps its full size and the right one is
