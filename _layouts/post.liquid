@@ -25,14 +25,14 @@ layout: default
         <span class="post-divider" aria-hidden="true"></span>
         <p class="post-tags">
           <a href="{{ year | prepend: '/blog/' | append: '/' | relative_url }}">
-            <i class="fa-solid fa-calendar fa-sm"></i>
+            {% include icon.liquid name="calendar-line" class="mgc-sm" %}
             {{ year }}
           </a>
           {% if tags != '' %}
             &nbsp; &middot; &nbsp;
             {% for tag in page.tags %}
               <a href="{{ tag | slugify | prepend: '/blog/tag/' | append: '/' | relative_url }}">
-                <i class="fa-solid fa-hashtag fa-sm"></i>
+                {% include icon.liquid name="hashtag-line" class="mgc-sm" %}
                 {{ tag }}
               </a>
               {% unless forloop.last %}&nbsp;{% endunless %}
@@ -42,7 +42,7 @@ layout: default
             &nbsp; &middot; &nbsp;
             {% for category in page.categories %}
               <a href="{{ category | slugify | prepend: '/blog/category/' | append: '/' | relative_url }}">
-                <i class="fa-solid fa-tag fa-sm"></i>
+                {% include icon.liquid name="tag-line" class="mgc-sm" %}
                 {{ category }}
               </a>
               {% unless forloop.last %}&nbsp;{% endunless %}

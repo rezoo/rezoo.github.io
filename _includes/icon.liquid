@@ -1,0 +1,7 @@
+{% comment %}
+  Inline MingCute icon (https://www.mingcute.com/, Apache-2.0; see icons/LICENSE).
+  Usage: {% include icon.liquid name="github-line" class="mgc-sm" %}
+{% endcomment %}
+<svg class="mgc{% if include.class %} {{ include.class }}{% endif %}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+  {% include icons/{{ include.name }}.svg %}
+</svg>

@@ -117,9 +117,7 @@ plugins:
   - jekyll-minifier
   - jekyll-paginate-v2
   - jekyll-sitemap
-  - jekyll-socials
   - al_folio_core
-  - al_icons
   - al_folio_upgrade
 
 defaults:
@@ -173,24 +171,6 @@ newsletter:
 # Only libraries used by the minimal about/blog site.
 third_party_libraries:
   download: false
-  fontawesome:
-    integrity:
-      css: "sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c="
-    url:
-      css: "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@{{version}}/css/all.min.css"
-    version: "7.2.0"
-  academicons:
-    integrity:
-      css: "sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw="
-    url:
-      css: "https://cdn.jsdelivr.net/npm/academicons@{{version}}/css/academicons.min.css"
-    version: "1.9.5"
-  scholar-icons:
-    integrity:
-      css: "sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY="
-    url:
-      css: "https://cdn.jsdelivr.net/npm/scholar-icons@{{version}}/css/scholar-icons.css"
-    version: "1.0.3"
   google_fonts:
     url:
       fonts: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
