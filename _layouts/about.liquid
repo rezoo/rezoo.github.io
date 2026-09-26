@@ -22,7 +22,7 @@ layout: default
       <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
         {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
         {% if page.profile.image_circular %}
-          {% assign profile_image_class = 'img-fluid rounded-circle' %}
+          {% assign profile_image_class = 'img-fluid' %}
           {% assign profile_frame_class = 'profile-photo-frame circular' %}
         {% else %}
           {% assign profile_image_class = 'img-fluid rounded' %}

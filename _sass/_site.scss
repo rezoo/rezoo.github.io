@@ -484,16 +484,24 @@ html[data-theme="dark"] .nav-monogram {
   font-size: 0.95rem;
 }
 
+// A thin accent ring set off from the photo by a gap in the page color.
 .profile-photo-frame {
   display: block;
   width: 100%;
-  padding: 2px;
+  padding: 4px;
   border-radius: 0.375rem;
-  background: oklch(0.9 0 0);
+  background: var(--bg);
+  box-shadow: 0 0 0 1px color-mix(in oklch, var(--accent) 35%, transparent);
 }
 
+// A slightly uneven, pebble-like outline instead of a perfect circle.
 .profile-photo-frame.circular {
-  border-radius: 50%;
+  --profile-shape: 58% 42% 55% 45% / 47% 56% 44% 53%;
+  border-radius: var(--profile-shape);
+}
+
+.profile-photo-frame.circular img {
+  border-radius: var(--profile-shape);
 }
 
 .profile-photo-frame figure {
