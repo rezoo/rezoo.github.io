@@ -3,9 +3,9 @@
  *
  * Every colour here is unchanged from before the hero-artwork pass — the page,
  * card, code and footer surfaces in particular. The artwork is layered on top
- * as a band (`body::before`) whose lower edge is cut along a soft curve just
- * below each page's header, drawn in flat colours with no fade, rather than
- * by re-tinting the site around it.
+ * as a band behind each page's header (`%hero-band`), cut along a soft curve
+ * just below it and drawn in flat colours with no fade, rather than by
+ * re-tinting the site around it.
  ******************************************************************************/
 
 :root {
@@ -27,9 +27,8 @@
   // middle into a left piece (the peach and coral forms) and a right piece
   // (everything else). Each piece is scaled to the band's height and pinned
   // to its own side, so the whole composition stays in view at every width:
-  // wide screens just show more of the plain ground between the two, and
-  // on phones the pieces overlap instead of being cropped away. The art
-  // pieces and `--hero-bg` (the artwork's own ground colour) are the
+  // wide screens just show more of the plain ground between the two. The
+  // art pieces and `--hero-bg` (the artwork's own ground colour) are the
   // per-theme half.
   --hero-art-left: url("/assets/img/hero-left-light.svg");
   --hero-art-right: url("/assets/img/hero-right-light.svg");
@@ -135,7 +134,6 @@ html[data-theme="dark"] {
  ******************************************************************************/
 
 body {
-  position: relative;
   color: var(--global-text-color);
   background: var(--global-bg-color);
   font-family: "Noto Sans JP", sans-serif;
@@ -157,7 +155,7 @@ body.fixed-top-nav {
 //
 // The mask's first layer is a single flat colour (a gradient only in
 // syntax): it keeps the band opaque down to the curve's strip.
-%hero-cut {
+%hero-band {
   --hero-art-size: max(100% - var(--hero-nav), var(--hero-art-min));
 
   position: relative;
@@ -470,7 +468,7 @@ html[data-theme="dark"] .nav-monogram {
  ******************************************************************************/
 
 .post:not(.blog-post) > .post-header {
-  @extend %hero-cut;
+  @extend %hero-band;
   --hero-after: 12px;
   padding-top: 26px;
 }
@@ -605,7 +603,7 @@ html[data-theme="dark"] .nav-monogram {
 }
 
 .blog-list .header-bar {
-  @extend %hero-cut;
+  @extend %hero-band;
   --hero-after: 4px;
   padding-top: 2.5rem;
   padding-inline: 0;
@@ -727,7 +725,7 @@ html[data-theme="dark"] .nav-monogram {
  ******************************************************************************/
 
 .blog-post .post-header-inner {
-  @extend %hero-cut;
+  @extend %hero-band;
   padding-top: 56px;
 }
 
