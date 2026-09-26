@@ -3,8 +3,9 @@
  *
  * Every colour here is unchanged from before the hero-artwork pass — the page,
  * card, code and footer surfaces in particular. The artwork is layered on top
- * as a masked band (`body::before`) that fades out into whatever `--bg` is,
- * rather than by re-tinting the site around it.
+ * as a band behind each page's header (`%hero-band`), cut along a soft curve
+ * just below it and drawn in flat colours with no fade, rather than by
+ * re-tinting the site around it.
  ******************************************************************************/
 
 :root {
@@ -22,24 +23,36 @@
   --tag: oklch(0.5 0.1 42);
   --shadow-soft: 0 18px 40px -26px oklch(0.45 0.09 40 / 45%);
 
-  // Hero band. The artwork ships as SVG: it is the band's full width on every
-  // screen, so a raster would either be soft on HiDPI or far heavier than the
-  // ~13KB (gzipped) this costs. `--hero-art` is the per-theme half.
-  --hero-height: clamp(300px, 23vw, 360px);
-  --hero-art: url("/assets/img/background-light.svg");
-  --hero-size: cover;
-  --hero-position: center center;
-  // Eased alpha ramp (not a straight 1 -> 0 line) so the band dissolves into
-  // the page background without leaving a Mach band at its lower edge.
-  --hero-mask: linear-gradient(
-    180deg,
-    rgb(0 0 0 / 100%) 0%,
-    rgb(0 0 0 / 100%) 38%,
-    rgb(0 0 0 / 88%) 54%,
-    rgb(0 0 0 / 58%) 70%,
-    rgb(0 0 0 / 24%) 86%,
-    rgb(0 0 0 / 0%) 100%
-  );
+  // Hero band. The artwork ships as SVG, split at the empty stretch in its
+  // middle into a left piece (the peach and coral forms) and a right piece
+  // (everything else). Each piece is scaled to the band's height and pinned
+  // to its own side, so the whole composition stays in view at every width:
+  // wide screens just show more of the plain ground between the two. The
+  // art pieces and `--hero-bg` (the artwork's own ground colour) are the
+  // per-theme half.
+  --hero-art-left: url("/assets/img/hero-left-light.svg");
+  --hero-art-right: url("/assets/img/hero-right-light.svg");
+  --hero-bg: #fcf4ee;
+  // The band runs from the top of the page to a curve cut just below each
+  // page's header: `--hero-gap` of clear band under the header's last line,
+  // then the curve itself, `--hero-curve` deep. Headers reserve `--hero-room`
+  // as bottom padding so the curve always lands between title and body.
+  --hero-cut: url("/assets/img/hero-cut.svg");
+  --hero-gap: 16px;
+  --hero-curve: 56px;
+  --hero-room: calc(var(--hero-gap) + var(--hero-curve));
+  // How far a header sits below the top of the page: the fixed navbar, plus
+  // the `.mt-5` margin on containers that have one (set on those below).
+  --hero-nav: 53px;
+  --hero-top: var(--hero-nav);
+  // Wide screens: a floor on the art's height, tied to the viewport width.
+  // A one-line title makes a shallow band, and fitting the art into it
+  // leaves two small corner pieces a long way apart. Past this floor the
+  // pieces grow into the band's lower edge and the curve cuts through them;
+  // deeper bands (longer titles) still fit the whole artwork.
+  --hero-art-min: min(20vw, 380px);
+  // Phones: how far the right piece is pushed past the right edge (below).
+  --hero-right-shift: 0px;
 
   // These `--global-*` names are also declared (with different values) by
   // the gem's `_themes.scss` on the same `html[data-theme="dark"]` selector,
@@ -78,7 +91,9 @@ html[data-theme="dark"] {
   --tag: oklch(0.85 0.09 48);
   --shadow-soft: 0 18px 40px -26px oklch(0 0 0 / 65%);
 
-  --hero-art: url("/assets/img/background-dark.svg");
+  --hero-art-left: url("/assets/img/hero-left-dark.svg");
+  --hero-art-right: url("/assets/img/hero-right-dark.svg");
+  --hero-bg: #1d1410;
 
   --global-bg-color: var(--bg);
   --global-text-color: var(--text);
@@ -119,7 +134,6 @@ html[data-theme="dark"] {
  ******************************************************************************/
 
 body {
-  position: relative; // anchors the hero band below
   color: var(--global-text-color);
   background: var(--global-bg-color);
   font-family: "Noto Sans JP", sans-serif;
@@ -129,24 +143,52 @@ body.fixed-top-nav {
   padding-top: 53px;
 }
 
-// The hero band. A body-level layer rather than a per-layout header, so the
-// about page, the blog index and every post share one continuous treatment.
-// A negative z-index keeps it above the body background but behind all
-// content; `inset-inline: 0` (not `100vw`) so it can never widen the page.
-body::before {
-  position: absolute;
-  z-index: -1;
-  inset-block-start: 0;
-  inset-inline: 0;
-  height: var(--hero-height);
-  background-image: var(--hero-art);
-  background-repeat: no-repeat;
-  background-position: var(--hero-position);
-  background-size: var(--hero-size);
-  content: "";
-  mask-image: var(--hero-mask);
-  -webkit-mask-image: var(--hero-mask);
-  pointer-events: none;
+// The hero band. Each page header draws it, since only the header knows
+// where its own last line ends. The band reaches up past the header to the
+// top of the page (`--hero-top`) and out to both edges of the window, and
+// ends `--hero-after` above the header's bottom edge, i.e. at the lowest point
+// of the curve. A negative z-index keeps it behind all content.
+//
+// Both art pieces start below the navbar and end at the curve's lowest
+// point. The curve dips near both edges, where the pieces sit, and rises in
+// the empty middle, so it only trims the pieces' lower edges slightly.
+//
+// The mask's first layer is a single flat colour (a gradient only in
+// syntax): it keeps the band opaque down to the curve's strip.
+%hero-band {
+  --hero-art-size: max(100% - var(--hero-nav), var(--hero-art-min));
+
+  position: relative;
+  padding-bottom: calc(var(--hero-room) + var(--hero-after, 0px));
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    inset-block: calc(-1 * var(--hero-top)) var(--hero-after, 0px);
+    inset-inline: calc(50% - 50vw);
+    background:
+      var(--hero-art-left) left 0 top var(--hero-nav) / auto var(--hero-art-size) no-repeat,
+      var(--hero-art-right) right calc(-1 * var(--hero-right-shift)) top var(--hero-nav) / auto var(--hero-art-size) no-repeat,
+      var(--hero-bg);
+    content: "";
+    mask-image: linear-gradient(#000 0 0), var(--hero-cut);
+    mask-position: top, bottom;
+    mask-repeat: no-repeat;
+    mask-size:
+      100% calc(100% - var(--hero-curve) + 1px),
+      100% var(--hero-curve);
+    pointer-events: none;
+  }
+}
+
+// The band is `100vw` wide, which includes a classic scrollbar's width;
+// clip that sliver rather than let it scroll the page sideways.
+html {
+  overflow-x: clip;
+}
+
+.container.mt-5 {
+  --hero-top: calc(var(--hero-nav) + 3rem);
 }
 
 .container {
@@ -425,8 +467,10 @@ html[data-theme="dark"] .nav-monogram {
  * About page
  ******************************************************************************/
 
-.post > .post-header {
-  padding-block: 26px 8px;
+.post:not(.blog-post) > .post-header {
+  @extend %hero-band;
+  --hero-after: 12px;
+  padding-top: 26px;
 }
 
 .post > .post-header .post-title {
@@ -542,10 +586,6 @@ html[data-theme="dark"] .nav-monogram {
  * Blog index
  ******************************************************************************/
 
-.archive-page > .post-header {
-  padding-block: 26px 24px;
-}
-
 .archive-page .post-title {
   margin: 0;
   color: var(--title);
@@ -563,7 +603,10 @@ html[data-theme="dark"] .nav-monogram {
 }
 
 .blog-list .header-bar {
-  padding: 2.5rem 0 2rem;
+  @extend %hero-band;
+  --hero-after: 4px;
+  padding-top: 2.5rem;
+  padding-inline: 0;
   // The gem draws a divider here too, a single rem above the tag list's own.
   // Two hairlines that close together read as a mistake; keep the lower one.
   border-bottom: 0;
@@ -682,7 +725,8 @@ html[data-theme="dark"] .nav-monogram {
  ******************************************************************************/
 
 .blog-post .post-header-inner {
-  padding-block: 56px 36px;
+  @extend %hero-band;
+  padding-top: 56px;
 }
 
 .blog-post .post-meta-row {
@@ -726,7 +770,7 @@ html[data-theme="dark"] .nav-monogram {
 }
 
 .blog-post .post-content {
-  padding-block: 40px 96px;
+  padding-block: 24px 96px;
   color: var(--text);
   font-size: 16px;
   line-height: 2.05;
@@ -871,31 +915,21 @@ html[data-theme="dark"] .chat-board {
  * Responsive
  ******************************************************************************/
 
-// Tablet and below the band is far too narrow to hold a 3:1 image: centring it
-// crops away every shape and leaves only the empty cream middle. Anchoring the
-// crop to the left edge keeps the coral forms — the artwork's strongest
-// element — in frame, and a ~2:1 band height keeps the sage edge just visible.
+// Squeezed into a phone's width, the desktop curve would turn into a steep
+// double wave, so this breakpoint swaps in a single, shallower arch, and a
+// shallower cut to match the tighter header spacing.
+//
+// The band is too narrow here for both art pieces side by side, so the left
+// one (the forms behind the title) keeps its full size and the right one is
+// pushed partly off the right edge, trading its outer part for some open
+// ground between the two. The art-height floor is for wide screens only.
 @media (max-width: 767.98px) {
   :root {
-    // A narrow band creates two problems for the page title.
-    //
-    // `cover` on a 3:1 image means a shorter band is a *wider* crop, so at
-    // 52vw the visible slice is wide enough to be mostly the artwork's empty
-    // cream centre — the part it was drawn to leave clear for text. Zooming in
-    // (a taller band) brings the left-hand coral forms up behind the title.
-    //
-    // The title sits at a fixed ~81-117px from the top (navbar height plus
-    // this breakpoint's header padding). At the 210px floor that's 39-56% of
-    // the way down — just past where the shared `--hero-mask` starts fading
-    // (38%) — but the ramp is still gentle there, so the title only dims to
-    // ~85% opacity at its worst. At the 300px ceiling it's 27-39%, essentially
-    // untouched. Shallow enough throughout that the root mask needs no
-    // override here, unlike the crop above.
-    //
-    // The 300px ceiling meets the desktop rule's 300px floor, so the band no
-    // longer jumps in height when crossing this breakpoint.
-    --hero-height: clamp(210px, 52vw, 300px);
-    --hero-position: left center;
+    --hero-cut: url("/assets/img/hero-cut-mobile.svg");
+    --hero-gap: 12px;
+    --hero-curve: 36px;
+    --hero-art-min: 0px;
+    --hero-right-shift: 12vw;
   }
 }
 
@@ -917,8 +951,9 @@ html[data-theme="dark"] .chat-board {
     padding: 6px;
   }
 
-  .post > .post-header {
-    padding-block: 18px 4px;
+  .post:not(.blog-post) > .post-header {
+    --hero-after: 8px;
+    padding-top: 18px;
   }
 
   // Full-bleed, the circular portrait is ~350px of face before a single line
@@ -946,7 +981,7 @@ html[data-theme="dark"] .chat-board {
   }
 
   .blog-list .header-bar {
-    padding: 1.75rem 0 1.5rem;
+    padding-top: 1.75rem;
   }
 
   .blog-list .header-bar h1,
@@ -956,7 +991,6 @@ html[data-theme="dark"] .chat-board {
 
   .blog-post .post-header-inner {
     padding-top: 36px;
-    padding-bottom: 28px;
   }
 
   .blog-post h1.post-title {
@@ -964,7 +998,7 @@ html[data-theme="dark"] .chat-board {
   }
 
   .blog-post .post-content {
-    padding-top: 32px;
+    padding-top: 20px;
     padding-bottom: 64px;
   }
 
